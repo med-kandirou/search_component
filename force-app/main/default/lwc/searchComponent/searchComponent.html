@@ -1,0 +1,39 @@
+<template>
+    <lightning-card>
+        <h1 class="title">Recherche et Filtre de Voitures</h1>
+            <div class="flex w-2/3 mr-auto ml-auto items-stretch search_bar">
+                <input 
+                    type="search"
+                    value={inputValue}
+                    onchange={handleInputChange}
+                    class="relative m-0 block w-70 min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none"
+                    placeholder="Search"
+                />
+                <button type="button" data-te-ripple-init data-te-ripple-color="light" onclick={search} class="relative z-[2] flex items-center rounded-r bg-blue-500 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg">   
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white" class="h-5 w-5">
+                    <path
+                        fill-rule="evenodd"
+                        d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                        clip-rule="evenodd"
+                    />
+                    </svg>
+                </button>
+            </div>
+        <div class="flex">
+            <div if:true={isprodVisible} class="border border-gray-200 rounded-lg shadow">
+                <c-marque-Component onsendmarque={handlemarque}></c-marque-Component>
+            </div>
+            <div if:true={isprodVisible} class="grid grid-cols-1 gap-4 justify-center mt-80 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
+                <div for:each={produits} for:item="produit" class="carcomp" key={produit.Id}>
+                    <c-car-Component onsendprodid={getStockbyProd} prod={produit}></c-car-Component>
+                </div> 
+            </div>
+            <div if:true={istockVisible} class="grid grid-cols-1 gap-4 justify-center mt-80 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
+                <div for:each={stocks} for:item="stk" class="carcomp" key={stk.Id}>
+                    <c-stock-Component stock={stk} onsendidstock={getdetailStock}></c-stock-Component>
+                </div> 
+            </div>
+            <c-detail-Component stock={stock} options={options} ></c-detail-Component>
+        </div>
+    </lightning-card>
+</template>

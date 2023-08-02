@@ -1,0 +1,13 @@
+template{
+	background-color: white;
+}
+.title{
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+}
+.search_bar{
+	width: 70%;
+	margin-top: 25px;
+	margin-bottom: 30px;
+}

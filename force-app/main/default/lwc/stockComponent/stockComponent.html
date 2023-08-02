@@ -1,0 +1,21 @@
+<template >
+        <div class="bg-white border border-gray-200 rounded-lg shadow">
+            <div>
+                <img class="rounded-t-lg w-150 h-100" src="https://www.mercedes-benz.lu/fr/passengercars/mercedes-benz-cars/coupe/range-overview/_jcr_content/swipeableteaserbox/par/swipeableteaser_1902035350/asset.MQ6.12.20210222155633.jpeg" alt=""/>
+            </div>
+            <div class="p-5">
+                <div>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{stock.Name}</h5>
+                </div>
+                <p>{stock.N_Chassis__c}</p>
+                <p>{stock.Status__c}</p>
+                <p>{stock.PPCM__c}</p>
+                <button class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4" data-id={stock.Id} onclick={handleClick}>
+                    Voir details
+                    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+</template>
