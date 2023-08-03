@@ -7,6 +7,7 @@ import getCarsBymarques from '@salesforce/apex/produitController.getCarsBymarque
 import getStockbyProd from '@salesforce/apex/stockController.getStockbyProd';
 import getStockbyId from '@salesforce/apex/stockController.getStockbyId';
 import getDetailStock from '@salesforce/apex/stockController.getDetailStock';
+import recherche from '@salesforce/apex/stockController.recherche';
 
 export default class SearchComponent extends LightningElement {
   connectedCallback() {
@@ -25,7 +26,12 @@ export default class SearchComponent extends LightningElement {
     })
   }
   search() {
-    console.log(this.inputValue);
+    recherche({input:this.inputValue}).then((result)=>{
+      this.istockVisible=true;
+      this.isprodVisible=false;
+      this.stocks=result;
+      console.log(this.inputValue);
+    })
   }
   handleInputChange(event) {
     this.inputValue = event.target.value;

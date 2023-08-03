@@ -1,4 +1,16 @@
 <template>
-    {stock}
-    {options}
+
+    <label>Name :</label> <p>{stock.Name}</p><br>
+    <label>N chassis :</label><p>{stock.N_Chassis__c}</p><br>
+    <label>PPCM :</label><p>{stock.PPCM__c}</p><br>
+    <label>Status :</label><p>{stock.Status__c}</p><br>
+
+
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={options}
+                columns={columns}>
+        </lightning-datatable>
+    </div>
 </template>

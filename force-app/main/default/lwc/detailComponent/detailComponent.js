@@ -4,4 +4,8 @@ export default class DetailComponent extends LightningElement {
     @api stock;
     @api options; 
 
+    columns = [
+        { label: 'Nom', fieldName: 'Name' },
+    ];
+
 }

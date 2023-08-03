@@ -10,17 +10,9 @@ public  with sharing class stockController {
   
     @AuraEnabled(cacheable=true)
     public static List<SObject> getDetailStock(String IdStock){
-        return [SELECT Id, Name
-                    FROM Option__c
-                    WHERE Id IN (
-                      SELECT Option__c
-                      FROM OptionStock__c
-                      WHERE Stock__c = :IdStock
-                    )
-
-				];
+        return [SELECT Id, Name FROM Option__c WHERE Id IN (SELECT Option__c FROM OptionStock__c WHERE Stock__c = :IdStock)];
     }
-    
+    @AuraEnabled(cacheable=true)
     public static List<Stock__c> recherche(String input){
         List<String> words = input.split(' ');
         String concatenatedString = '';
