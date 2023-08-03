@@ -10,7 +10,7 @@ public  with sharing class stockController {
   
     @AuraEnabled(cacheable=true)
     public static List<SObject> getDetailStock(String IdStock){
-        return [SELECT Id, Name FROM Option__c WHERE Id IN (SELECT Option__c FROM OptionStock__c WHERE Stock__c = :IdStock)];
+        return [SELECT Option__r.Name, Prix__c FROM OptionStock__c WHERE Stock__c = :IdStock];
     }
     @AuraEnabled(cacheable=true)
     public static List<Stock__c> recherche(String input){
@@ -47,7 +47,7 @@ public  with sharing class stockController {
         for(Stock__c opt:[SELECT Id FROM Stock__c WHERE Id IN (SELECT Stock__c FROM OptionStock__c WHERE Option__c IN :optionIds)]){
             stockIds.add(opt.Id);
         }
-        List<Stock__c> resultat= [SELECT Id,Name,PPCM__c,Status__c FROM Stock__c WHERE Id IN :hepler.getOccurance(stockIds)]; 
+        List<Stock__c> resultat= [SELECT Id,Name,N_Chassis__c,PPCM__c,Status__c FROM Stock__c WHERE Id IN :helper.getOccurance(stockIds)]; 
         return resultat;
     }
 }

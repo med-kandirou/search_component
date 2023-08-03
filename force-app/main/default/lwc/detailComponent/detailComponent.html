@@ -1,16 +1,15 @@
 <template>
-
-    <label>Name :</label> <p>{stock.Name}</p><br>
-    <label>N chassis :</label><p>{stock.N_Chassis__c}</p><br>
-    <label>PPCM :</label><p>{stock.PPCM__c}</p><br>
-    <label>Status :</label><p>{stock.Status__c}</p><br>
-
-
-    <div style="height: 300px;">
-        <lightning-datatable
-                key-field="id"
-                data={options}
-                columns={columns}>
+    <div for:each={stock} for:item="stk" key={stk.Id}>
+        <label>Name :</label> <span>{stk.Name}</span><br>
+        <label>N chassis :</label><span>{stk.N_Chassis__c}</span><br>
+        <label>PPCM :</label><span>{stk.PPCM__c}</span><br>
+        <label>Status :</label><span>{stk.Status__c}</span><br>
+    </div>
+    <div>
+        <lightning-datatable    
+            key-field="id"
+            data={options}
+            columns={columns}>
         </lightning-datatable>
     </div>
 </template>

@@ -29,8 +29,8 @@ export default class SearchComponent extends LightningElement {
     recherche({input:this.inputValue}).then((result)=>{
       this.istockVisible=true;
       this.isprodVisible=false;
+      this.isdetailVisible=false;
       this.stocks=result;
-      console.log(this.inputValue);
     })
   }
   handleInputChange(event) {
@@ -44,6 +44,7 @@ export default class SearchComponent extends LightningElement {
 
   istockVisible = false;
   isprodVisible = true;
+  isdetailVisible = false;
   getStockbyProd(event){
     getStockbyProd({IdProd:event.detail}).then((result) => {
       this.stocks=result;
@@ -63,15 +64,25 @@ export default class SearchComponent extends LightningElement {
   options;
   getinfoStock(){
         getStockbyId({IdStock:this.selectedStock}).then((result)=>{
-            this.stock=result;
-            console.log(this.stock);
+          this.stock=result;
         })
     }
     getDetail(){
         getDetailStock({IdStock:this.selectedStock}).then((result)=>{
           this.options=result;
-          console.log(this.options);
+          this.istockVisible=false;
+          this.isprodVisible=false;
+          this.isdetailVisible=true;
         })
     }
-
+    btntoprod(){
+      this.isprodVisible=true;
+      this.istockVisible=false;
+      this.isdetailVisible=false;
+    }
+    btntostock(){
+      this.isprodVisible=false;
+      this.istockVisible=true;
+      this.isdetailVisible=false;
+    }
 }
