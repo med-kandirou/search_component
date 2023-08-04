@@ -45,6 +45,7 @@ export default class SearchComponent extends LightningElement {
   istockVisible = false;
   isprodVisible = true;
   isdetailVisible = false;
+  ispinnerVisible=true;
   getStockbyProd(event){
     getStockbyProd({IdProd:event.detail}).then((result) => {
       this.stocks=result;

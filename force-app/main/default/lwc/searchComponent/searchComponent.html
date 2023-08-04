@@ -41,7 +41,8 @@
                 <lightning-button label="Précédent" title="Précédent" onclick={btntostock}></lightning-button><br><br>
                 <c-detail-Component stock={stock} options={options} ></c-detail-Component>
             </div>
-            
+            <c-spinner-Component if:true={ispinnerVisible}></c-spinner-Component>
         </div>
+        
     </lightning-card>
 </template>
