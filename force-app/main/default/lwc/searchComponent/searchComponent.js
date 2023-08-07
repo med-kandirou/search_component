@@ -28,15 +28,15 @@ export default class SearchComponent extends LightningElement {
     })
   }
   search() {
-    this.ispinnerVisible=true;
+    // this.ispinnerVisible=true;
     recherche({input:this.inputValue}).then((result)=>{
       this.stocks=result;
       this.istockVisible=true;
       this.isprodVisible=false;
       this.isdetailVisible=false;
-      if(result.length>0){
-        this.ispinnerVisible=false;
-      }
+      // if(result.length>0){
+      //   this.ispinnerVisible=false;
+      // }
     })
   }
   handleInputChange(event) {

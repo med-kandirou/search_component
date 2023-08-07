@@ -1,8 +1,10 @@
 .Disponible{
 	color : green;
+    font-weight: bold;
 }
 .Réservé{
 	color : red;
+    font-weight: bold;
 }
 .Livré{
 	color: grey;
