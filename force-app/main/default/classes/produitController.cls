@@ -1,7 +1,7 @@
 public class produitController {
     @AuraEnabled(cacheable=true)
     public static List<Produit__c> getprods(){
-        return [SELECT Id,Marque__c, Modele__c,Name,Serie__c from Produit__c LIMIT 9];
+        return [SELECT Id,Marque__c, Modele__c,Serie__c,Annee__c from Produit__c LIMIT 9];
     }
     @AuraEnabled(cacheable=true)
     public static List<Produit__c> getCarsBymarques(String marques) {
@@ -18,7 +18,7 @@ public class produitController {
                 conditionList+=' ' + splitArray[i] + ' OR Marque__c = ';
             }
         }
-        List<Produit__c> prods = (List<Produit__c>)Database.query('SELECT Id, Marque__c, Modele__c, Name, Serie__c FROM Produit__c WHERE Marque__c = '+conditionList);
+        List<Produit__c> prods = (List<Produit__c>)Database.query('SELECT Id, Marque__c, Modele__c, Serie__c, Annee__c FROM Produit__c WHERE Marque__c = '+conditionList);
 		return prods;        
     }
 }

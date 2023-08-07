@@ -1,7 +1,6 @@
-import { LightningElement,track,wire } from 'lwc';
-import { loadStyle, loadScript } from 'lightning/platformResourceLoader';
-import flowbiteCSS from '@salesforce/resourceUrl/flowbite_css';
-import flowbiteJS from '@salesforce/resourceUrl/flowbite_js';
+import { LightningElement } from 'lwc';
+import { loadStyle } from 'lightning/platformResourceLoader';
+import flowbiteCss from '@salesforce/resourceUrl/flowbite_css';
 import getproduits from '@salesforce/apex/produitController.getprods';
 import getCarsBymarques from '@salesforce/apex/produitController.getCarsBymarques';
 import getStockbyProd from '@salesforce/apex/stockController.getStockbyProd';
@@ -12,8 +11,7 @@ import recherche from '@salesforce/apex/stockController.recherche';
 export default class SearchComponent extends LightningElement {
   connectedCallback() {
     Promise.all([
-      loadStyle(this, flowbiteCSS),
-      loadScript(this, flowbiteJS),
+      loadStyle(this, flowbiteCss)
     ])
     this.getprods();
   }
@@ -21,36 +19,52 @@ export default class SearchComponent extends LightningElement {
   produits; //store produit
   stocks; //store stock
   getprods(){
+    this.ispinnerVisible=true;
     getproduits().then((result) => {
       this.produits=result;
+      if(result.length>0){
+        this.ispinnerVisible=false;
+      }
     })
   }
   search() {
+    this.ispinnerVisible=true;
     recherche({input:this.inputValue}).then((result)=>{
+      this.stocks=result;
       this.istockVisible=true;
       this.isprodVisible=false;
       this.isdetailVisible=false;
-      this.stocks=result;
+      if(result.length>0){
+        this.ispinnerVisible=false;
+      }
     })
   }
   handleInputChange(event) {
     this.inputValue = event.target.value;
   }
   handlemarque(event) {
+    this.ispinnerVisible=true;
     getCarsBymarques({ marques: JSON.stringify(event.detail) }).then((result) => {
       this.produits=result;
+      if(result.length>0){
+        this.ispinnerVisible=false;
+      }
     })
   }
 
   istockVisible = false;
   isprodVisible = true;
   isdetailVisible = false;
-  ispinnerVisible=true;
+  ispinnerVisible=false;
   getStockbyProd(event){
+    this.ispinnerVisible=true;
     getStockbyProd({IdProd:event.detail}).then((result) => {
       this.stocks=result;
       this.istockVisible=true;
       this.isprodVisible=false;
+      if(result.length>0){
+        this.ispinnerVisible=false;
+      }
     })
   }
 
@@ -64,16 +78,24 @@ export default class SearchComponent extends LightningElement {
   stock;
   options;
   getinfoStock(){
+        this.ispinnerVisible=true;
         getStockbyId({IdStock:this.selectedStock}).then((result)=>{
           this.stock=result;
+          if(result.length>0){
+            this.ispinnerVisible=false;
+          }
         })
     }
     getDetail(){
+        this.ispinnerVisible=true;
         getDetailStock({IdStock:this.selectedStock}).then((result)=>{
           this.options=result;
           this.istockVisible=false;
           this.isprodVisible=false;
           this.isdetailVisible=true;
+          if(result.length>0){
+            this.ispinnerVisible=false;
+          }
         })
     }
     btntoprod(){

@@ -1,3 +1,18 @@
-.dummy{
-	color : black;
+.data{
+	font-weight: normal;
+}
+.center{
+	text-align: center;
+}
+.Disponible{
+	color : green;
+	font-weight: bold;
+}
+.Réservé{
+	color : red;
+	font-weight: bold;
+}
+.Livré{
+	color: grey;
+	font-weight: bold;
 }

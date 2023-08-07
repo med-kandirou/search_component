@@ -1,23 +1,19 @@
-<template >
+<template>
         <div class="bg-white border border-gray-200 rounded-lg shadow">
-            <div>
-                <img class="rounded-t-lg w-150 h-100" src="https://www.mercedes-benz.lu/fr/passengercars/mercedes-benz-cars/coupe/range-overview/_jcr_content/swipeableteaserbox/par/swipeableteaser_1902035350/asset.MQ6.12.20210222155633.jpeg" alt=""/>
-            </div>
+            <img class="w-150 h-100 rounded-t-lg" src="https://www.mercedes-benz.lu/fr/passengercars/mercedes-benz-cars/coupe/range-overview/_jcr_content/swipeableteaserbox/par/swipeableteaser_1902035350/asset.MQ6.12.20210222155633.jpeg" alt=""/>
             <div class="p-5">
-                <div>
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{prod.Marque__c}</h5>
+                <h5 class="mb-2 center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{prod.Marque__c}</h5>
+                <p class="data center">Modéle : {prod.Modele__c}</p>
+                <p class="data center">Série : {prod.Serie__c}</p>
+                <p class="data center">Année : {prod.Annee__c}</p><br>
+                <div class="btns">
+                    <button class="inline-flex px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-600 focus:ring-4" data-id={prod.Id} onclick={handleClick}>
+                        Voir stock
+                    </button>
+                    <button class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-lg" data-id={prod.Id} onclick={downloadProd}>
+                        Télecharger
+                    </button>
                 </div>
-                <p>{prod.Modele__c}</p>
-                <p>{prod.Serie__c}</p>
-                <button class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4" data-id={prod.Id} onclick={handleClick}>
-                    Voir le Stock
-                    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </button>
-                 <button class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg" data-id={prod.Id} onclick={downloadProd}>
-                    Telecharger
-                </button>
             </div>
         </div>
 </template>

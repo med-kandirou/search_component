@@ -1,15 +1,24 @@
 <template>
-    <div for:each={stock} for:item="stk" key={stk.Id}>
-        <label>Name :</label> <span>{stk.Name}</span><br>
-        <label>N chassis :</label><span>{stk.N_Chassis__c}</span><br>
-        <label>PPCM :</label><span>{stk.PPCM__c}</span><br>
-        <label>Status :</label><span>{stk.Status__c}</span><br>
+    <div for:each={stock} for:item="stk" key={stk.Id} class="detail">
+        <div><label class="label">Name : </label> <span>{stk.Name}</span></div>
+        <div><label class="label">N chassis : </label><span>{stk.N_Chassis__c}</span></div>
+        <div><label class="label">PPCM : </label><span>{stk.PPCM__c}</span> MAD</div>
+        <div><label class="label">Status : </label><span class={stk.Status__c}>{stk.Status__c}</span></div>
     </div>
-    <div>
-        <lightning-datatable    
-            key-field="id"
-            data={options}
-            columns={columns}>
-        </lightning-datatable>
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom d'option</th>
+                <th>Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={options} for:item="op" >
+                <tr key={op.Option__r.Name}>
+                    <td>{op.Option__r.Name}</td>
+                    <td>{op.Prix__c} MAD</td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
 </template>

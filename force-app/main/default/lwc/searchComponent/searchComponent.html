@@ -29,7 +29,9 @@
                     <c-car-Component onsendprodid={getStockbyProd} prod={produit}></c-car-Component>
                 </div> 
             </div>
-            <div if:true={istockVisible}>
+            <c-spinner-Component if:true={ispinnerVisible}></c-spinner-Component>
+        </div>
+        <div if:true={istockVisible}>
                 <lightning-button label="Précédent" title="Précédent" onclick={btntoprod}></lightning-button><br><br>
                 <div class="grid grid-cols-1 gap-4 justify-center mt-80 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
                     <div for:each={stocks} for:item="stk" class="carcomp" key={stk.Id}>
@@ -37,11 +39,9 @@
                     </div> 
                 </div>
             </div>
-            <div if:true={isdetailVisible}>
-                <lightning-button label="Précédent" title="Précédent" onclick={btntostock}></lightning-button><br><br>
-                <c-detail-Component stock={stock} options={options} ></c-detail-Component>
-            </div>
-            <c-spinner-Component if:true={ispinnerVisible}></c-spinner-Component>
+        <div if:true={isdetailVisible}>
+            <lightning-button label="Précédent" title="Précédent" onclick={btntostock}></lightning-button><br><br>
+            <c-detail-Component stock={stock} options={options} ></c-detail-Component>
         </div>
         
     </lightning-card>

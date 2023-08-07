@@ -1,3 +1,10 @@
-.dummy{
-	color : black;
+.data{
+	font-weight: normal;
+}
+.center{
+	text-align: center;
+}
+.btns{
+	display: flex;
+	justify-content: space-around;
 }
