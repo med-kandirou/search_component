@@ -1,0 +1,12 @@
+<apex:page renderAs="PDF" controller="FicheTechniqueController">
+    <apex:image url="{!URLFOR($Resource.logo, 'Stellar Wheels.png')}" alt="Logo Image" />
+    <apex:form >
+        <!-- Display the data -->
+        <apex:dataTable value="{!data}" var="prod">
+            <apex:column value="{!prod.Name}" />
+            <apex:column value="{!prod.Marque__c}" />
+            <apex:column value="{!prod.Modele__c}" />
+            <apex:column value="{!prod.Serie__c}" />
+        </apex:dataTable>
+    </apex:form>
+</apex:page>
