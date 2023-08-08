@@ -1,0 +1,43 @@
+.Disponible{
+	color : green;
+    font-weight: bold;
+}
+.Réservé{
+	color : red;
+    font-weight: bold;
+}
+.Livré{
+	color: grey;
+    font-weight: bold;
+}
+.title{
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+.label{
+	font-weight: bold;
+}
+    table {
+        border-collapse: collapse;
+        font-size: 16px;
+    }
+    
+    thead {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    
+    th, td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+.detail{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}

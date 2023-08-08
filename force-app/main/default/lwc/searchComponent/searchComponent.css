@@ -8,3 +8,13 @@
 	margin-top: 25px;
 	margin-bottom: 30px;
 }
+.spinner{
+    width: 80px;
+    height: 80px;
+	position: absolute;
+  	top: 25%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+	background-color: transparent;
+	padding: 100%;
+}

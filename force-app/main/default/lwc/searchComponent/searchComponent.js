@@ -33,7 +33,6 @@ export default class SearchComponent extends LightningElement {
       this.stocks=result;
       this.istockVisible=true;
       this.isprodVisible=false;
-      this.isdetailVisible=false;
       // if(result.length>0){
       //   this.ispinnerVisible=false;
       // }
@@ -54,7 +53,6 @@ export default class SearchComponent extends LightningElement {
 
   istockVisible = false;
   isprodVisible = true;
-  isdetailVisible = false;
   ispinnerVisible=false;
   getStockbyProd(event){
     this.ispinnerVisible=true;
@@ -67,12 +65,13 @@ export default class SearchComponent extends LightningElement {
       }
     })
   }
-
+  isModalopen=false;
   selectedStock;
   getdetailStock(event){
     this.selectedStock=event.detail;
     this.getinfoStock();
     this.getDetail();
+    this.isModalopen=true;
   }
 
   stock;
@@ -85,27 +84,24 @@ export default class SearchComponent extends LightningElement {
             this.ispinnerVisible=false;
           }
         })
-    }
-    getDetail(){
-        this.ispinnerVisible=true;
-        getDetailStock({IdStock:this.selectedStock}).then((result)=>{
-          this.options=result;
-          this.istockVisible=false;
-          this.isprodVisible=false;
-          this.isdetailVisible=true;
-          if(result.length>0){
-            this.ispinnerVisible=false;
-          }
-        })
-    }
-    btntoprod(){
-      this.isprodVisible=true;
-      this.istockVisible=false;
-      this.isdetailVisible=false;
-    }
-    btntostock(){
-      this.isprodVisible=false;
-      this.istockVisible=true;
-      this.isdetailVisible=false;
-    }
+  }
+
+  getDetail(){
+      this.ispinnerVisible=true;
+      getDetailStock({IdStock:this.selectedStock}).then((result)=>{
+        this.options=result;
+        this.istockVisible=true;
+        this.isprodVisible=false;
+        if(result.length>0){
+          this.ispinnerVisible=false;
+        }
+    })
+  }
+  btntoprod(){
+    this.isprodVisible=true;
+    this.istockVisible=false;
+  }
+  closeModal(){
+    this.isModalopen=false;
+  }
 }
