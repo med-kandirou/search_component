@@ -10,18 +10,25 @@
                         <lightning-button-icon icon-name="utility:close" onclick={closeModel}
                             alternative-text="close" variant="bare-inverse"
                             class="slds-modal__close"></lightning-button-icon>
-                        <div for:each={stock} for:item="stk" key={stk.Id} class="detail">
+                        <div for:each={stock} for:item="stk" key={stk.Id}>
                             <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Détail de {stk.Name}</h2>
                         </div>
                     </header>
                     <!-- Modal Body Start here -->
                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                        <div for:each={stock} for:item="stk" key={stk.Id} class="detail">
-                            <div><label class="label">Name : </label> <span>{stk.Name}</span></div>
-                            <div><label class="label">N chassis : </label><span>{stk.N_Chassis__c}</span></div>
-                            <div><label class="label">PPCM : </label><span>{stk.PPCM__c}</span> MAD</div>
-                            <div><label class="label">Status : </label><span class={stk.Status__c}>{stk.Status__c}</span></div>
-                        </div>
+                        <div class="stock-container">
+                            <div class="stock-details">
+                                <div for:each={stock} for:item="stk" key={stk.Id}>
+                                    <div><label class="label">Name : </label> <span>{stk.Name}</span></div>
+                                    <div><label class="label">N chassis : </label><span>{stk.N_Chassis__c}</span></div>
+                                    <div><label class="label">PPCM : </label><span>{stk.PPCM__c}</span> MAD</div>
+                                    <div><label class="label">Status : </label><span class={stk.Status__c}>{stk.Status__c}</span></div>
+                                </div>
+                            </div>
+                            <div class="stock-image">
+                                <img src="https://www.mercedes-benz.lu/fr/passengercars/mercedes-benz-cars/coupe/range-overview/_jcr_content/swipeableteaserbox/par/swipeableteaser_1902035350/asset.MQ6.12.20210222155633.jpeg" alt="Stock Image" class="stock-image">
+                            </div>
+                            </div>
                     <table>
                         <thead>
                             <tr>

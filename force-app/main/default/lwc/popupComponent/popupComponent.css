@@ -36,8 +36,25 @@
     tr:nth-child(even) {
         background-color: #f2f2f2;
     }
-.detail{
+/* .detail{
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
-}
+} */
+
+.stock-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .stock-details {
+    flex: 1;
+    padding-right: 20px;
+  }
+
+  .stock-image {
+    max-width: 150px;
+    max-height: 150px;
+  }
