@@ -1,7 +1,7 @@
 public class produitController {
     @AuraEnabled(cacheable=true)
     public static List<Produit__c> getprods(){
-        return [SELECT Id,Marque__c, Modele__c,Serie__c,Annee__c from Produit__c LIMIT 9];
+        return [SELECT Id,Marque__c, Modele__c,Serie__c,Annee__c from Produit__c LIMIT 6];
     }
     @AuraEnabled(cacheable=true)
     public static List<Produit__c> getCarsBymarques(String marques) {

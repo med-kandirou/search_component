@@ -3,7 +3,7 @@
             <img class="w-150 h-100 rounded-t-lg" src="https://www.mercedes-benz.lu/fr/passengercars/mercedes-benz-cars/coupe/range-overview/_jcr_content/swipeableteaserbox/par/swipeableteaser_1902035350/asset.MQ6.12.20210222155633.jpeg" alt=""/>
             <div class="p-5">
                 <h5 class="mb-2 center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{prod.Marque__c}</h5>
-                <p class="data center">Modéle : {prod.Modele__c}</p>
+                <p class="data center">Modéle : {prod.modele__c}</p>
                 <p class="data center">Série : {prod.Serie__c}</p>
                 <p class="data center">Année : {prod.Annee__c}</p><br>
                 <div class="btns">
@@ -11,7 +11,7 @@
                         Stock
                     </button>
                     <button class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-lg" data-id={prod.Id} onclick={downloadProd}>
-                        Télecharger
+                        PDF
                     </button>
                 </div>
             </div>

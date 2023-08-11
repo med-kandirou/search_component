@@ -1,5 +1,5 @@
 <template>
-    <div class="slds-m-around_xx-large">
+    <div class="slds-m-around_xx-large popup">
         <template if:true={ismodalopen}>
             <!-- Modal/Popup Box starts here -->
             <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
@@ -46,9 +46,15 @@
                         </tbody>
                     </table>
                     </div>
+                    <lightning-flow
+                        if:true={isflowrunning}
+                        flow-api-name="add_stock_to_opp"
+                        flow-input-variables={inputVariables}>
+                    </lightning-flow>
                     <!-- Modal Footer Start here -->
                     <footer class="slds-modal__footer">
-                        <lightning-button variant="neutral" label="Voir le stock" onclick={torecord}></lightning-button>
+                        <lightning-button variant="neutral" style="margin-right:20px" label="Voir le stock" onclick={torecord}></lightning-button>
+                        <lightning-button if:true={inrecordpage} variant="neutral" label="Ajouter" onclick={addStocktoOpp}></lightning-button>
                     </footer>
                 </div>
             </section>

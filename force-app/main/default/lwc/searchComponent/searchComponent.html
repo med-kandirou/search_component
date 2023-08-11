@@ -35,14 +35,17 @@
             <!-- spinner -->
         </div>
         <div if:true={istockVisible}>
-                <lightning-button label="Précédent" title="Précédent" onclick={btntoprod}></lightning-button><br><br>
-                <div class="grid grid-cols-1 gap-4 justify-center mt-80 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
-                    <div for:each={stocks} for:item="stk" class="carcomp" key={stk.Id}>
-                        <c-stock-Component stock={stk} onsendidstock={getdetailStock}></c-stock-Component>
-                    </div> 
-                </div>
+            <lightning-button label="Précédent" title="Précédent" onclick={btntoprod}></lightning-button><br><br>
+            <div class="grid grid-cols-1 gap-4 justify-center mt-80 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
+                <div for:each={stocks} for:item="stk" class="carcomp" key={stk.Id}>
+                    <c-stock-Component stock={stk} onsendidstock={getdetailStock}></c-stock-Component>
+                </div> 
             </div>
+        </div>
         <!-- modal -->
         <c-popup-Component ismodalopen={isModalopen} onhandleclose={closeModal} stock={stock} options={options}></c-popup-Component>  
     </lightning-card>
+
+
+    
 </template>

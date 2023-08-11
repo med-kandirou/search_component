@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement ,wire} from 'lwc';
 import { loadStyle } from 'lightning/platformResourceLoader';
 import flowbiteCss from '@salesforce/resourceUrl/flowbite_css';
 import getproduits from '@salesforce/apex/produitController.getprods';
@@ -9,12 +9,14 @@ import getDetailStock from '@salesforce/apex/stockController.getDetailStock';
 import recherche from '@salesforce/apex/stockController.recherche';
 
 export default class SearchComponent extends LightningElement {
+
   connectedCallback() {
     Promise.all([
       loadStyle(this, flowbiteCss)
     ])
     this.getprods();
   }
+
   inputValue=''; //input value
   produits; //store produit
   stocks; //store stock
@@ -57,6 +59,7 @@ export default class SearchComponent extends LightningElement {
   getStockbyProd(event){
     this.ispinnerVisible=true;
     getStockbyProd({IdProd:event.detail}).then((result) => {
+      console.log(result);
       this.stocks=result;
       this.istockVisible=true;
       this.isprodVisible=false;
